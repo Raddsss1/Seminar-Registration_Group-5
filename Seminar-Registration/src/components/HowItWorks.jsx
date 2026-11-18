@@ -73,7 +73,7 @@ function TimelineItem({ item }) {
       </p>
 
       {/* Card */}
-      <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6 transition-colors duration-300 hover:border-indigo-500/40 md:ml-10">
+      <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6 transition-all duration-500 hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-2 md:ml-10">
         <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold text-slate-100">
           {item.Title}
         </h3>
@@ -107,7 +107,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative min-h-screen flex items-center justify-center"
+      className="relative min-h-screen flex items-center justify-center scroll-mt-12"
     >
       {/* ROOT DIV */}
       <div className="relative p-8 max-w-7xl w-full mx-auto flex flex-col items-center justify-center text-center group">
@@ -116,10 +116,10 @@ export default function HowItWorks() {
           <div className="max-w-sm mt-2 mb-4 bg-transparent border border-indigo-400/40 px-4 py-2 rounded-lg shadow-md">
             <h1 className="text-lg text-indigo-400 ">The Process</h1>
           </div>
-          <h1 className="text-2xl md:text-5xl lg:text-6xl text-white items-center justify-center font-bold">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white items-center justify-center font-bold">
             HOW IT WORKS
           </h1>
-          <p className="text-md md:text-lg lg:text-xl text-indigo-300 mb-6">
+          <p className="text-lg md:text-xl lg:text-2xl text-indigo-300 mb-6">
             Here's how our platform works:
           </p>
           {/* TIMELINE */}

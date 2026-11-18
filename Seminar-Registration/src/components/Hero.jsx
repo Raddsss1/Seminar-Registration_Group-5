@@ -23,9 +23,9 @@ export default function Hero() {
             {heroArray.map((item, index) => (
               <div
                 key={index}
-                className="bg-transparent text-indigo-300 font-bold p-4 py-2 px-4 rounded border border-indigo-400 hover:border-indigo-600 hover:text-indigo-500 transition-all duration-500"
+                className="bg-transparent border border-indigo-400/40 px-4 py-2 rounded-2xl shadow-md transition-all duration-500 ease-out hover:bg-indigo-500/20 hover:shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-2 "
               >
-                <h1>{item.title}</h1>
+                <h1 className="text-md text-indigo-400">{item.title}</h1>
               </div>
             ))}
           </div>
@@ -43,13 +43,13 @@ export default function Hero() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6 slide-in-from-top duration-1000">
             <button
               onClick={() => setLoginOpen(true)}
-              className="bg-indigo-600 hover:bg-indigo-800 text-white font-medium p-4 py-2 px-4 rounded border border-indigo-400 hover:border-indigo-500 hover:-translate-y-2 transition-all duration-500"
+              className="bg-indigo-600 hover:bg-indigo-800 text-white font-medium p-4 py-2 px-4 rounded-lg border border-indigo-400 hover:border-indigo-500 hover:-translate-y-2 transition-all duration-500"
             >
               Register Now
             </button>
             <a
               href="#how-it-works"
-              className="bg-transparent hover:bg-indigo-800/20 text-white font-medium p-4 py-2 px-4 rounded border border-indigo-400 hover:border-indigo-500 hover:-translate-y-2 transition-all duration-500"
+              className="bg-transparent border border-indigo-400/40 px-4 py-2 rounded-lg transition-all duration-500 ease-out hover:bg-indigo-500/20 hover:shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-2"
             >
               Learn More
             </a>
