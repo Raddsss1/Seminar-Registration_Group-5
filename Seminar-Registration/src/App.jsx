@@ -12,7 +12,7 @@ const orbs = [
   {
     pos: "top-[2%] -left-40",
     size: "h-[34rem] w-[34rem]",
-    color: "bg-indigo-500",
+    color: "bg-indigo-400",
     opacity: "opacity-20",
   },
   {
