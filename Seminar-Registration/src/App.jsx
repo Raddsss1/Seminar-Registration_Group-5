@@ -39,12 +39,6 @@ const orbs = [
     color: "bg-cyan-500",
     opacity: "opacity-10",
   },
-  {
-    pos: "top-[85%] -right-24",
-    size: "h-[30rem] w-[30rem]",
-    color: "bg-cyan-400",
-    opacity: "opacity-10",
-  },
 ];
 
 function Background() {
