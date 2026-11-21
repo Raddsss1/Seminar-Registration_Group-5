@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SignUpModal from "./SignUpModal";
 
 // Which fields each role needs. Add or remove roles/fields here only.
 const ROLES = {
@@ -40,6 +41,8 @@ const FIELDS = {
 const EMPTY = { email: "", password: "", organizerCode: "" };
 
 export default function LogInModal({ onClose, onLogin }) {
+  const [signUpOpen, setSignUpOpen] = useState(false);
+
   const [role, setRole] = useState("attendee");
   const [values, setValues] = useState(EMPTY);
   const [showPw, setShowPw] = useState(false);
@@ -113,22 +116,25 @@ export default function LogInModal({ onClose, onLogin }) {
     >
       {/* ROOT DIV */}
       <div
-        className="bg-slate-900 max-w-md w-full h-auto p-4 rounded-xl outline outline-2 outline-slate-800 "
+        className="bg-slate-950 max-w-md w-full h-auto p-4 rounded-xl outline outline-2 outline-slate-800"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col justify-center items-center gap-4 mt-2 mb-6 ">
           {/* HEADER */}
           <div className="text-center duration-500 transition-all ease-in-out slide-in-from-top">
-            <h1 id="loginTitle" className="text-2xl font-bold text-white">
+            <h1
+              id="loginTitle"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
+            >
               Welcome Back
             </h1>
-            <p className="text-slate-400">
+            <p className="text-slate-400 text-xs sm:text-sm md:text-md lg:text-lg">
               Please enter your details to continue
             </p>
           </div>
 
           {/* ROLE SELECTOR */}
-          <div className="flex justify-center bg-slate-950/60 rounded-lg text-white w-full duration-700 transition-all ease-in-out slide-in-from-top">
+          <div className="flex justify-center bg-slate-900/60 mb-2 rounded-lg text-white w-full duration-700 transition-all ease-in-out slide-in-from-top">
             <div role="tablist" className="grid grid-cols-3 gap-2 w-full p-2">
               {Object.entries(ROLES).map(([key, r]) => (
                 <button
@@ -137,7 +143,7 @@ export default function LogInModal({ onClose, onLogin }) {
                   role="tab"
                   aria-selected={role === key}
                   onClick={() => handleRoleChange(key)}
-                  className={`rounded-md h-[2rem] w-full transition ${
+                  className={`cursor-pointer rounded-md h-[2rem] w-full duration-300 transition-all ease-in-out ${
                     role === key
                       ? "bg-indigo-700 text-white"
                       : "text-slate-400 hover:text-white hover:bg-slate-800"
@@ -176,7 +182,7 @@ export default function LogInModal({ onClose, onLogin }) {
                       value={values[name]}
                       onChange={(e) => handleChange(name, e.target.value)}
                       autoFocus={i === 0}
-                      className={`bg-slate-800 p-2 rounded-md border border-indigo-800 text-white w-full placeholder-slate-500 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/30 transition ${
+                      className={`bg-slate-800 p-2 mb-2 rounded-md border border-indigo-800 text-white w-full placeholder-slate-500 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/30 transition ${
                         isPassword ? "pr-16" : ""
                       }`}
                     />
@@ -184,7 +190,7 @@ export default function LogInModal({ onClose, onLogin }) {
                       <button
                         type="button"
                         onClick={() => setShowPw((s) => !s)}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white px-2 py-1"
+                        className="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white px-2 py-1"
                       >
                         {showPw ? "Hide" : "Show"}
                       </button>
@@ -212,17 +218,25 @@ export default function LogInModal({ onClose, onLogin }) {
             </div>
           </form>
 
-          {/* Admins are not self-registered, so hide Sign Up for them */}
           {role !== "admin" && (
-            <div className="text-slate-400 duration-500 transition-all ease-in-out slide-in-from-top">
-              <span>Don’t Have an Account? </span>
-              <a href="#" className="text-indigo-400 hover:text-indigo-300">
+            <div className="duration-1000 transition-all ease-in-out slide-in-from-top">
+              <span className="text-white">Don’t Have an Account? </span>
+              <button
+                onClick={() => setSignUpOpen(true)}
+                className="cursor-pointer text-indigo-600 hover:text-indigo-300"
+              >
                 Sign Up
-              </a>
+              </button>
             </div>
           )}
         </div>
       </div>
+      {signUpOpen && (
+        <SignUpModal
+          onClose={() => setSignUpOpen(false)}
+          onSwitchToLogin={() => setSignUpOpen(false)}
+        />
+      )}
     </section>
   );
 }
